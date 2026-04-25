@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KommiVoyager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1301d103e93d36de42a50dcf887ca47016113c81")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ee498e2ac74f444541eea75f8cb7d1b794f2bfc")]
 [assembly: System.Reflection.AssemblyProductAttribute("KommiVoyager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KommiVoyager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

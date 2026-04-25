@@ -2,6 +2,13 @@
 
 public class KommiVoyagerClass
 {
+    // список ребер
+    List<(char from, char to)> edges = new List<(char, char)>();
+    private List<int> route = new List<int>();
+    
+    private char[] points = { 'А', 'Б', 'В', 'Г', 'Д', 'Е' };
+    
+    
     public int KommiVoyagerMethod(int[,] matrix)
     {
         
@@ -39,6 +46,16 @@ public class KommiVoyagerClass
                 listH.Add(h);
                 idxH++;
                 active = false;
+                
+                foreach (var edge in edges)
+                {
+                    Console.WriteLine(edge.from + " -- " + edge.to);
+                }
+
+                foreach (var item in route)
+                {
+                    Console.WriteLine(item);
+                }
             }
             else
             {
@@ -50,6 +67,9 @@ public class KommiVoyagerClass
         return listH.Last();
     }
 
+    
+
+    
     
     //================По строке====================
     
@@ -114,7 +134,9 @@ public class KommiVoyagerClass
             for (int j = 0; j < matrix.GetLength(0); j++)
             {
                 if (matrix[j, i] != -1)
+                {
                     matrix[j, i] -= minRow[i];
+                }
             }
         }
     }
@@ -173,8 +195,14 @@ public class KommiVoyagerClass
                         }
                     }
 
-                    if (minElemStr == int.MaxValue) minElemStr = 0;
-                    if (minElemColumn == int.MaxValue) minElemColumn = 0;
+                    if (minElemStr == int.MaxValue)
+                    {
+                        minElemStr = 0;
+                    }
+                    if (minElemColumn == int.MaxValue)
+                    {
+                        minElemColumn = 0;
+                    }
 
                     tempMark = minElemStr + minElemColumn;
                     if (tempMark > maxMark)
@@ -186,6 +214,12 @@ public class KommiVoyagerClass
                 }
             }
         }
+        
+        edges.Add((points[IdxI+1], points[IdxJ+1]));
+        
+        
+        
+            
 
         //==========Удаляем лишние строки и столбцы по максимальной оценке
         int[,] newMatrix = new int[matrix.GetLength(0)-1, matrix.GetLength(1)-1];
@@ -252,10 +286,18 @@ public class KommiVoyagerClass
                         maxMark = tempMark;
                         IdxI = i;
                         IdxJ = j;
+                        
                     }
                 }
             }
         }
+
+        
+        edges.Add((points[IdxI+1], points[IdxJ+1]));
+        
+        
+        
+            
 
         //==========Удаляем лишние строки и столбцы по максимальной оценке
         int[,] newMatrix = new int[matrix.GetLength(0) - 1, matrix.GetLength(1) - 1];
