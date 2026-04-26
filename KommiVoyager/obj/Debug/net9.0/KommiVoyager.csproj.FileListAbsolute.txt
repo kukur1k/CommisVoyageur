@@ -1,0 +1,15 @@
+D:\C#_Project\CommisVoyageur\KommiVoyager\bin\Debug\net9.0\KommiVoyager.exe
+D:\C#_Project\CommisVoyageur\KommiVoyager\bin\Debug\net9.0\KommiVoyager.deps.json
+D:\C#_Project\CommisVoyageur\KommiVoyager\bin\Debug\net9.0\KommiVoyager.runtimeconfig.json
+D:\C#_Project\CommisVoyageur\KommiVoyager\bin\Debug\net9.0\KommiVoyager.dll
+D:\C#_Project\CommisVoyageur\KommiVoyager\bin\Debug\net9.0\KommiVoyager.pdb
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.AssemblyInfoInputs.cache
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.AssemblyInfo.cs
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.csproj.CoreCompileInputs.cache
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.sourcelink.json
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.dll
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\refint\KommiVoyager.dll
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.pdb
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\KommiVoyager.genruntimeconfig.cache
+D:\C#_Project\CommisVoyageur\KommiVoyager\obj\Debug\net9.0\ref\KommiVoyager.dll
