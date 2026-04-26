@@ -4,13 +4,27 @@ public class KommiVoyagerClass
 {
     // список ребер
     List<(char from, char to)> edges = new List<(char, char)>();
-    private List<int> route = new List<int>();
     
-    private char[] points = { 'А', 'Б', 'В', 'Г', 'Д', 'Е' };
+    private char[] points = { 'А', 'Б', 'В', 'Г', 'Д' };
+    
+    // запоминаем изначальные индексы
+    private List<int> rowMap = new List<int>();
+    private List<int> colMap = new List<int>();
     
     
     public int KommiVoyagerMethod(int[,] matrix)
     {
+        
+        edges.Clear();
+        rowMap.Clear();
+        colMap.Clear();
+        
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            rowMap.Add(i);
+            colMap.Add(i);
+        }
+        
         
         //Коллекция для H
         List<int> listH = new List<int>();
@@ -34,6 +48,19 @@ public class KommiVoyagerClass
             int[,] newMatrix;
             if (matrix.GetLength(0) == 2 & matrix.GetLength(1) == 2) 
             {
+                
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        if (matrix[i, j] == 0 && i != j)
+                        {
+                            edges.Add((points[rowMap[i]], points[colMap[j]]));
+                        }
+                    }
+                }
+                
+                
                 newMatrix = ProcessMaxMarkForTwo(matrix);
                 minElemRowArr = MinElemRow(matrix);
                 ReductionMatrixRow(matrix, minElemRowArr);
@@ -46,16 +73,16 @@ public class KommiVoyagerClass
                 listH.Add(h);
                 idxH++;
                 active = false;
-                
+
+
+
+                RouteProcessor();
+
                 foreach (var edge in edges)
                 {
                     Console.WriteLine(edge.from + " -- " + edge.to);
                 }
 
-                foreach (var item in route)
-                {
-                    Console.WriteLine(item);
-                }
             }
             else
             {
@@ -69,6 +96,46 @@ public class KommiVoyagerClass
 
     
 
+    //==================Поиск маршрута===================
+    public void RouteProcessor()
+    {
+        var path = new List<char>(); // весь путь
+        var routesVal = new Dictionary<char, char>(); // из массива веток типа А--Б делаем словарь
+    
+        foreach (var edge in edges)
+        {
+            routesVal[edge.from] = edge.to;
+        }
+
+        // Находим начальную точку (город, из которого никто не приходит)
+        char startCity = ' ';
+        foreach (var edge in edges)
+        {
+            // если неачало ветки не является нигде концом
+            if (!routesVal.ContainsValue(edge.from))
+            {
+                startCity = edge.from;
+                break;
+            }
+        }
+
+        // Если не нашли - начинаем с первого ребра
+        if (startCity == ' ')
+        {
+            startCity = edges[0].from;
+        }
+
+        char currentCity = startCity;
+        for (int i = 0; i < routesVal.Count; i++)
+        {
+            path.Add(currentCity); // добавляем город
+            currentCity = routesVal[currentCity];  // следующий город, это тот, для которого этот является началом
+        }
+        path.Add(startCity); // замкнули
+
+        Console.WriteLine("Маршрут: " + string.Join("->", path));
+    }
+    
     
     
     //================По строке====================
@@ -99,7 +166,10 @@ public class KommiVoyagerClass
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 if (matrix[i, j] != -1)
+                {
                     matrix[i, j] -= minRow[i];
+                }
+                    
             }
         }
     }
@@ -215,10 +285,12 @@ public class KommiVoyagerClass
             }
         }
         
-        edges.Add((points[IdxI+1], points[IdxJ+1]));
+        edges.Add((points[rowMap[IdxI]], points[colMap[IdxJ]]));
         
         
-        
+        // удаляем использованные индексы
+        rowMap.RemoveAt(IdxI);
+        colMap.RemoveAt(IdxJ);
             
 
         //==========Удаляем лишние строки и столбцы по максимальной оценке
@@ -293,7 +365,12 @@ public class KommiVoyagerClass
         }
 
         
-        edges.Add((points[IdxI+1], points[IdxJ+1]));
+        edges.Add((points[rowMap[IdxI]], points[colMap[IdxJ]]));
+        
+        
+        // удаляем использованные индексы
+        rowMap.RemoveAt(IdxI);
+        colMap.RemoveAt(IdxJ);
         
         
         
