@@ -4,8 +4,7 @@ public class KommiVoyagerClass
 {
     // список ребер
     List<(char from, char to)> edges = new List<(char, char)>();
-    
-    private char[] points = { 'А', 'Б', 'В', 'Г', 'Д' };
+    List<char> points = new List<char>();
     
     // запоминаем изначальные индексы
     private List<int> rowMap = new List<int>();
@@ -14,6 +13,11 @@ public class KommiVoyagerClass
     
     public int KommiVoyagerMethod(int[,] matrix)
     {
+        
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            points.Add((char)(1040 + i)); 
+        }
         
         edges.Clear();
         rowMap.Clear();
